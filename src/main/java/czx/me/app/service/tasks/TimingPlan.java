@@ -28,7 +28,7 @@ public class TimingPlan {
     }
 
     @Scheduled(cron = "${timePlan.scheduler}")
-    public void doTimingPlan() throws MessagingException, IOException, com.sun.xml.internal.messaging.saaj.packaging.mime.MessagingException {
+    public void doTimingPlan() throws MessagingException, IOException {
         emailService.taskStart();
         log.info("域名检查任务已启动！");
     }

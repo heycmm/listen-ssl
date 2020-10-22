@@ -1,7 +1,5 @@
 package czx.me.app.service.email;
 
-
-import com.sun.xml.internal.messaging.saaj.packaging.mime.MessagingException;
 import czx.me.app.model.User;
 import czx.me.app.properties.AppProperties;
 import czx.me.app.service.tasks.SSLCertExpiry;
@@ -9,6 +7,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
+import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import java.io.IOException;
 import java.util.List;
@@ -30,7 +29,7 @@ public class EmailService {
         this.defaultSender = appProperties.getDefaultEmailSender();
         this.users = appProperties.getUserlist();
     }
-    public  void taskStart() throws IOException, MessagingException, javax.mail.MessagingException {
+    public  void taskStart() throws IOException, MessagingException {
         for (User user : users) {
             int remainingDay = SSLCertExpiry.getRemainingDay(user.getHost());
             if (remainingDay<7){
