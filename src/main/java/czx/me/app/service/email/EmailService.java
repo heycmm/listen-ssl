@@ -41,7 +41,7 @@ public class EmailService {
         }
     }
 
-    public boolean sendEmail(String title,String toEmail,String text) throws MessagingException, javax.mail.MessagingException {
+    public void sendEmail(String title, String toEmail, String text) throws MessagingException{
         MimeMessage message = this.mailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message);
         helper.setFrom(this.defaultSender);
@@ -51,10 +51,8 @@ public class EmailService {
         try {
             this.mailSender.send(message);
             log.info("Text邮件已经发送。");
-            return true;
         } catch (Exception e) {
             log.throwing("发送Text邮件时发生异常！","sendEmail", e);
-            return false;
         }
     }
 }

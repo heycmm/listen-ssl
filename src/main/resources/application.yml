@@ -8,12 +8,14 @@ spring:
     protocol: smtp
 
 app:
+  # 发送者邮箱
   default-email-sender: /**
+  # 需要监听的域名
   userlist:
     - host: baidu.com
       email: 123@qq.com
     - host: taobao.cn
       email: 123@qq.com
-
+# 定时规则
 timePlan:
   scheduler: " 0/10 * * * * ? "
